@@ -1,0 +1,136 @@
+🕵️‍♂️ Unnamed INTagram
+Unnamed INTagram è un tool OSINT da terminale per raccogliere informazioni sui profili Instagram.
+Funziona tramite il cookie sessionid (dopo il login su Instagram) e permette di:
+
+configurare e salvare automaticamente il proprio sessionID
+
+ottenere dettagli completi da USERNAME
+
+risalire a un profilo partendo da un ID numerico
+
+visualizzare i dati in modo ordinato in tabella ASCII
+
+esportare i risultati in file TXT sul Desktop
+
+aggiornarsi facilmente tramite script di update
+
+Il tool gira in un ambiente Python virtualenv dedicato, creato in automatico con lo script di installazione.
+Lanciandolo con il comando intagram, compare un menu interattivo che guida passo passo.
+
+
+⚠️ Nota: richiede di aver effettuato il login a instagram.com
+ con il proprio browser.
+
+Il cookie sessionid può scadere o essere invalidato (logout, cambio password, ecc.): in quel caso basta riconfigurarlo.
+
+🚀 Come si installa
+
+Scarica il file install_intagram.sh dalla repository.
+
+Apri un terminale nella cartella dove hai salvato il file.
+
+Rendi eseguibile lo script e avvia l’installazione:
+
+..............................
+chmod +x install_intagram.sh
+bash install_intagram.sh
+.............................
+
+
+Al termine, aggiorna gli alias caricando nuovamente il tuo .bashrc:
+
+............................
+source ~/.bashrc
+............................
+
+
+
+
+Ora puoi avviare il tool con:
+
+
+.........
+intagram
+........
+
+
+📖 Menu interattivo
+
+
+Una volta avviato con intagram, vedrai questo menu:
+
+
+==== Unnamed INTagram ====
+[1] Configurazione sessionID
+[2] Info da USERNAME
+[3] Info da ID
+[4] Stato
+[5] Aggiorna / Ripara
+[0] Esci
+
+
+
+1) Configurazione sessionID
+Guida passo passo su come ottenere il cookie sessionid dal browser.
+Prova prima la configurazione automatica, altrimenti puoi incollarlo manualmente.
+Se in futuro ricevi errori 401/403, basta riconfigurarlo.
+
+2) Info da USERNAME
+Inserisci un nome utente (senza @).
+Mostra ID, nome, follower, following, biografia, sito web, foto profilo, ecc.
+Dopo il risultato puoi:
+1) Tornare al menu principale
+2) Estrarre le info in un file TXT salvato automaticamente sul Desktop
+
+3) Info da ID
+Inserisci l’ID numerico di un profilo.
+Mostra gli stessi dettagli dell’opzione 2, ma partendo dall’ID.
+Anche qui puoi estrarre in TXT.
+
+4) Stato
+Visualizza sessionID oscurato e data di ultimo aggiornamento.
+Utile per verificare se sei correttamente configurato.
+
+5) Aggiorna / Ripara
+
+Aggiorna le dipendenze Python nella virtualenv.
+Utile se ci sono problemi o se vuoi assicurarti di avere l’ultima versione.
+
+0) Esci
+Chiude il programma.
+
+
+=========================================================0
+
+🖥️ Creare un launcher sul Desktop
+
+
+Se vuoi avviare il tool da un’icona sul Desktop:
+Apri un terminale e crea un file .desktop:
+
+nano ~/Desktop/intagram.desktop
+
+Incolla dentro:
+
+...........................
+[Desktop Entry]
+Name=Unnamed INTagram
+Exec=bash -i -c 'intagram'
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Utility;
+...........................
+
+Salva e chiudi (CTRL+O, INVIO, CTRL+X).
+
+Rendi eseguibile il launcher:
+
+chmod +x ~/Desktop/intagram.desktop
+
+Ora sul tuo Desktop avrai l’icona per avviare Unnamed INTagram con un doppio clic.
+
+
+
+
+
