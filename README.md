@@ -1,63 +1,88 @@
 🕵️‍♂️ Unnamed INTagram
-Unnamed INTagram è un tool OSINT da terminale per raccogliere informazioni sui profili Instagram.
-Funziona tramite il cookie sessionid (dopo il login su Instagram) e permette di:
-
-configurare e salvare automaticamente il proprio sessionID
-
-ottenere dettagli completi da USERNAME
-
-risalire a un profilo partendo da un ID numerico
-
-visualizzare i dati in modo ordinato in tabella ASCII
-
-esportare i risultati in file TXT sul Desktop
-
-aggiornarsi facilmente tramite script di update
-
-Il tool gira in un ambiente Python virtualenv dedicato, creato in automatico con lo script di installazione.
-Lanciandolo con il comando intagram, compare un menu interattivo che guida passo passo.
 
 
-⚠️ Nota: richiede di aver effettuato il login a instagram.com
- con il proprio browser.
+Unnamed INTagram è un tool OSINT da terminale per profili Instagram.
 
-Il cookie sessionid può scadere o essere invalidato (logout, cambio password, ecc.): in quel caso basta riconfigurarlo.
+Permette di:
 
-🚀 Come si installa
 
-Scarica il file install_intagram.sh dalla repository.
 
-Apri un terminale nella cartella dove hai salvato il file.
 
-Rendi eseguibile lo script e avvia l’installazione:
+configurare e salvare automaticamente il proprio sessionid (cookie dopo il login);
 
-..............................
+
+
+
+ottenere dettagli completi da USERNAME o ID numerico;
+
+
+
+
+esportare i risultati in un file TXT ordinato sul Desktop (anche con campi sensibili);
+
+
+
+
+scaricare l’intero profilo: immagine di profilo, foto, caroselli, video e reels (dal primo all’ultimo post), con manifest di supporto;
+
+
+
+
+aggiornarsi facilmente tramite update.sh.
+
+
+
+
+⚠️ Nota: richiede di aver effettuato il login su instagram.com
+ dal proprio browser. Il sessionid può scadere o essere invalidato (logout, cambio password, ecc.): in quel caso basta riconfiguralo.
+
+
+
+🚀 Installazione
+
+
+
+
+Scarica il file install_intagram.sh
+
+
+
+
+Apri il terminale nella cartella dove si trova il file
+
+
+
+
+Lancia:
+
+
+
+
+
+
 chmod +x install_intagram.sh
 bash install_intagram.sh
-.............................
-
-
-Al termine, aggiorna gli alias caricando nuovamente il tuo .bashrc:
-
-............................
 source ~/.bashrc
-............................
 
 
 
 
-Ora puoi avviare il tool con:
+
+Avvia con:
 
 
-.........
+
+
+
+
 intagram
-........
 
 
-📖 Menu interattivo
 
 
-Una volta avviato con intagram, vedrai questo menu:
+📋 Menu interattivo
+
+
 
 
 ==== Unnamed INTagram ====
@@ -66,66 +91,81 @@ Una volta avviato con intagram, vedrai questo menu:
 [3] Info da ID
 [4] Stato
 [5] Aggiorna / Ripara
+[6] Scarica profilo intero (foto/video)
 [0] Esci
 
 
 
-1) Configurazione sessionID
-Guida passo passo su come ottenere il cookie sessionid dal browser.
-Prova prima la configurazione automatica, altrimenti puoi incollarlo manualmente.
-Se in futuro ricevi errori 401/403, basta riconfigurarlo.
-
-2) Info da USERNAME
-Inserisci un nome utente (senza @).
-Mostra ID, nome, follower, following, biografia, sito web, foto profilo, ecc.
-Dopo il risultato puoi:
-1) Tornare al menu principale
-2) Estrarre le info in un file TXT salvato automaticamente sul Desktop
-
-3) Info da ID
-Inserisci l’ID numerico di un profilo.
-Mostra gli stessi dettagli dell’opzione 2, ma partendo dall’ID.
-Anche qui puoi estrarre in TXT.
-
-4) Stato
-Visualizza sessionID oscurato e data di ultimo aggiornamento.
-Utile per verificare se sei correttamente configurato.
-
-5) Aggiorna / Ripara
-
-Aggiorna le dipendenze Python nella virtualenv.
-Utile se ci sono problemi o se vuoi assicurarti di avere l’ultima versione.
-
-0) Esci
-Chiude il programma.
 
 
-=========================================================0
-
-🖥️ Creare un launcher sul Desktop
+1: guida passo passo alla configurazione del sessionid (auto o manuale).
 
 
-Se vuoi avviare il tool da un’icona sul Desktop:
-Apri un terminale e crea un file .desktop:
 
-nano ~/Desktop/intagram.desktop
 
-Incolla dentro:
+2 / 3: ricerca da username o ID con tabella ordinata, esportabile in TXT.
 
-...........................
-[Desktop Entry]
-Name=Unnamed INTagram
-Exec=bash -i -c 'intagram'
-Icon=utilities-terminal
-Terminal=true
-Type=Application
-Categories=Utility;
-...........................
 
-Salva e chiudi (CTRL+O, INVIO, CTRL+X).
 
-Rendi eseguibile il launcher:
 
-chmod +x ~/Desktop/intagram.desktop
+4: mostra stato sessionID e ultima configurazione.
 
-Ora sul tuo Desktop avrai l’icona per avviare Unnamed INTagram con un doppio clic.
+
+
+
+5: aggiorna/ripara l’ambiente.
+
+
+
+
+6: scarica tutto il profilo (foto profilo, immagini, caroselli, video, reels).
+
+
+
+
+
+📂 Download profilo
+
+
+I contenuti vengono salvati in:
+
+
+
+
+~/OSINT Tool/intagram/downloads/<username>_<timestamp>/
+
+
+
+
+
+profile.jpg → immagine profilo
+
+
+
+
+manifest.txt → log con ID post, data, tipo, link, caption
+
+
+
+
+<postid>.jpg o .mp4 → media singoli
+
+
+
+
+<postid>_1.jpg, <postid>_2.mp4 … → media dei caroselli
+
+
+
+
+
+⚖️ Disclaimer
+
+
+Questo strumento utilizza API non ufficiali.
+
+L’uso è destinato a fini di analisi OSINT, investigativi o di ricerca.
+
+Il download di contenuti può violare i Termini di Servizio di Instagram e i diritti d’autore.
+
+Assicurati di avere titolo, consenso o legittimo interesse per l’utilizzo.
